@@ -1,18 +1,16 @@
 # Use Node.js LTS
 FROM node:20
 
-# Set working directory
 WORKDIR /app
 
-# Copy dependencies and install
 COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the code
 COPY . .
 
-# Expose API port
-EXPOSE 3000
+# Railway uses PORT=8080 internally; default to 3000 if not set
+ENV PORT=${PORT:-3000}
 
-# Start the server
+EXPOSE $PORT
+
 CMD ["node", "server.js"]
