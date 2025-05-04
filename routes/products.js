@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
             .input('Name', sql.VarChar(255), Name)
             .input('Detail', sql.NVarChar(4000), Detail)
             .input('CategoryGroup', sql.Int, CategoryGroup)
-            .input('ImageUrl', sql.NVarChar(1000), ImageUrl)
+            .input('ImageUrl', sql.NVarChar(1000), ImageUrl)    
             .query(`
                 UPDATE Product
                 SET Name = @Name,
